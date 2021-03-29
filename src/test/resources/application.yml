@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@192.168.0.37:11521/junit
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    username: username
+    password: password
+    
+server:
+   port: 19001
+   
+   
+interface:
+  port: 62000

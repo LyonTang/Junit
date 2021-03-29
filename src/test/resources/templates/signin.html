@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<title>Sign In</title>
+	</head>
+	
+	<body>
+		<label>Username</label>
+		<input type="text" id="username"></input>
+		<br></br>
+		<label>Password</label>
+		<input type="password" id="password"></input>
+		<button id="submit" type="button">登陆</button>
+	
+	</body>
+	
+	<script type="text/javascript" src="/jquery.js"></script>
+	
+	<script>
+		$("#submit").on("click", function(e){
+			e.preventDefault();
+			console.log(1);
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var data = {
+				username: username,
+				password: password
+			};
+			$.ajax({
+				url: "/user/signin",
+				type: "post",
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				dataType: "json",
+				success: function(data, status){
+					if(data.success){
+						window.location.href = "/index";
+					}else{
+						alert(data.msg);
+					}
+				}
+			})
+		})
+	
+	</script>
+</html>
